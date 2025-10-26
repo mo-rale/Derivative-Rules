@@ -19,6 +19,37 @@
             padding: 20px;
         }
 
+        /* Back to Main Page Button */
+        .back-to-main {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        .back-to-main:active {
+            transform: translateY(0);
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -275,6 +306,21 @@
             input[type="text"] {
                 font-size: 16px;
             }
+
+            /* Adjust back button for mobile */
+            .back-to-main {
+                top: 10px;
+                left: 10px;
+                padding: 10px 18px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .back-to-main {
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
         }
 
         .error {
@@ -289,6 +335,11 @@
 </head>
 
 <body>
+    <!-- Back to Main Page Button -->
+    <button class="back-to-main" onclick="goToMainPage()">
+        ← Main Page
+    </button>
+
     <div class="container">
         <div class="header">
             <h1>Derivative Calculator</h1>
@@ -326,6 +377,17 @@
     </div>
 
     <script>
+        // Function to go back to main page
+        function goToMainPage() {
+            // Replace with your actual main page URL
+            const mainPageURL = '../index.html'; // Adjust path as needed
+            
+            // For hosted version, you might want to use:
+            // const mainPageURL = 'https://yourusername.github.io';
+            
+            window.location.href = mainPageURL;
+        }
+
         let currentRule = 'addition';
 
         const ruleConfigs = {
