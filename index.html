@@ -379,14 +379,23 @@
     <script>
         // Function to go back to main page
         function goToMainPage() {
-            // Replace with your actual main page URL
-            const mainPageURL = '../index.html'; // Adjust path as needed
-            
-            // For hosted version, you might want to use:
-            // const mainPageURL = 'https://yourusername.github.io';
-            
-            window.location.href = mainPageURL;
+    const githubPagesURL = 'https://mo-rale.github.io/mathmasterpro/';
+    const localPath = '/index.html';
+    
+    try {
+        if (window.location.hostname === 'localhost' || 
+            window.location.hostname === '127.0.0.1' ||
+            window.location.protocol === 'file:') {
+            window.location.href = localPath;
+        } else {
+            window.location.href = githubPagesURL;
         }
+    } catch (error) {
+        console.error('Navigation error:', error);
+        // Fallback to local path
+        window.location.href = localPath;
+    }
+}
 
         let currentRule = 'addition';
 
